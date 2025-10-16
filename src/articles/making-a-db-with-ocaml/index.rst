@@ -22,7 +22,7 @@ If you want to follow along, you'll need `opam`_ and `dune`_ installed.
 .. _opam: https://opam.ocaml.org/
 .. _dune: https://dune.build/
 
-We can use `dune` to quickly initialize the new project:
+We can use ``dune`` to quickly initialize the new project:
 
 .. code-block:: bash
 
@@ -34,7 +34,7 @@ We can use `dune` to quickly initialize the new project:
   Yes, camalbrarian stands for Camel Librarian, because we'll be starting with the query engine, and a query engine is basically a specialized librarian.
   And no, the typo in "camal" was not intentional, but let's just roll with it.
 
-We can `cd` into the new folder and create an Opam switch.
+We can ``cd`` into the new folder and create an Opam switch.
 
 .. code-block:: bash
 
@@ -45,7 +45,7 @@ If you haven't used OCaml before, you're probably already confused why I created
 Essentially, Opam switches are "isolated OCaml environments" (`source`_).
 Switches allow you to have different versions of OCaml installed at the same time, so you can "switch" between them.
 Where I found switches confusing at first is that they also manage all packages that you install.
-I'm used to the C# or Rust model where installed packages are stored/managed within the project directory (e.g. `dotnet add package ...` or `cargo add ...`) and language versions are managed separately.
+I'm used to the C# or Rust model where installed packages are stored/managed within the project directory (e.g. ``dotnet add package ...`` or ``cargo add ...``) and language versions are managed separately.
 But Opam switches manage the language, tooling, and packages all at the same time.
 
 .. _source: https://ocaml.org/docs/opam-switch-introduction
@@ -55,8 +55,8 @@ Sharing a switch between multiple projects would be faster, but it also means th
 This might be fine at first, but eventually you would want to use a different version of the language or a particular package, and then you would want another switch.
 Thankfully, Opam has an easy solution for creating project-specific switches. Opam calls these "local switches", while shared switches are called "global switches."
 
-To understand the difference better, we can peruse the `opam switch` man page by running `opam switch --help` or `man opam-switch`.
-If you run that and search for the `create` subcommand, you'll find this blurb:
+To understand the difference better, we can peruse the ``opam switch`` man page by running ``opam switch --help`` or ``man opam-switch``.
+If you run that and search for the ``create`` subcommand, you'll find this blurb:
 
   Create a new switch, and install the given compiler there. SWITCH can be a plain name, or a directory, absolute or relative, in which case a local switch is created below the given directory. COMPILER, if omitted, defaults to SWITCH if it is a plain name, unless --packages, --formula or --empty is specified. When creating a local switch, and none of these options are present, the compiler is chosen according to the configuration default (see opam-init(1)). If the chosen directory contains package definitions, a compatible compiler is searched within the default selection, and the packages will automatically get installed.
 
@@ -64,20 +64,20 @@ If you are allergic to man pages or if you want more info, you can read through 
 
 .. _Introduction to opam Switches: https://ocaml.org/docs/opam-switch-introduction#types-of-switches
 
-My takeaway is that you should almost always want to create a local switch by running something like `opam switch create .` in your project directory.
+My takeaway is that you should almost always want to create a local switch by running something like ``opam switch create .`` in your project directory.
 This will most closely mimic how other language package managers work and should provide the level of project isolation that you are used to.
 
-After my create switch command finished installing everything, it recommened that I run `eval $(opam env)` to update my current shell environment.
+After my create switch command finished installing everything, it recommened that I run ``eval $(opam env)`` to update my current shell environment.
 After we run that, we can poke around a little bit to understand what Opam did for us.
 
-I'll start by trying to source our `ocaml` binary with the `which` command:
+I'll start by trying to source our ``ocaml`` binary with the ``which`` command:
 
 .. code:: bash
 
   camalbrarian $ which ocaml
   ~/development/camalbrarian/_opam/bin/ocaml
 
-Okay so Opam made a little `bin/` folder local to our project. Let's investigate that a little bit:
+Okay so Opam made a little ``bin/`` folder local to our project. Let's investigate that a little bit:
 
 .. code:: bash
 
@@ -91,7 +91,7 @@ Okay so Opam made a little `bin/` folder local to our project. Let's investigate
 I still haven't used OCaml enough to know what all of these are for, but you can chase down their man pages if you really care.
 The names indicate that they are all different tools that are useful for the compilation process.
 
-If we want to see what switch we are currently on, you can use `switch list`:
+If we want to see what switch we are currently on, you can use ``switch list``:
 
 .. code:: bash
 
@@ -104,7 +104,7 @@ If we want to see what switch we are currently on, you can use `switch list`:
   [NOTE] Current switch has been selected based on the current directory.
        The current global system switch is 5.3.0.
 
-You might be wondering what that `eval $(opam env)` command did earlier.
+You might be wondering what that ``eval $(opam env)`` command did earlier.
 
 .. code:: bash
    
@@ -116,8 +116,8 @@ You might be wondering what that `eval $(opam env)` command did earlier.
   OCAML_TOPLEVEL_PATH='~/development/camalbrarian/_opam/lib/toplevel'; export OCAML_TOPLEVEL_PATH;
   PATH='~/development/camalbrarian/_opam/bin:{rest of PATH omitted for privacy}'; export PATH;
 
-I was worried that `opam env` would be some complicated shell script, but it is refreshingly simple.
-It sets up some environment variables to keep track of a few paths, and then it adds the local switch `bin/` folder to `PATH`.
+I was worried that ``opam env`` would be some complicated shell script, but it is refreshingly simple.
+It sets up some environment variables to keep track of a few paths, and then it adds the local switch ``bin/`` folder to ``PATH``.
 
 Before we write any OCaml code, I would like to at least set up an `LSP`_.
 The primary LSP for OCaml is `ocaml-lsp`_ and it has some simple install instructions if you are using Opam:
@@ -131,13 +131,13 @@ The primary LSP for OCaml is `ocaml-lsp`_ and it has some simple install instruc
 
 .. note::
 
-  The README for `ocaml-lsp` has this note: "you will need to install ocaml-lsp-server in every switch where you would like to use it."
+  The README for ``ocaml-lsp`` has this note: "you will need to install ocaml-lsp-server in every switch where you would like to use it."
 
 I think it's unfortunate that you have to reinstall your tooling on every new switch, because that can feel like a drag when you are new to the language and starting lots of toy projects.
 But it might be unavoidable.
 Part of me wonders if you could have a local and global switch registered at the same time.
 So new library packages would be installed in the local switch, but you could also specify that tooling packages should be installed in your global switch.
-Then both switches would be registered on your `PATH` when you run `eval $(opam env)`, with the local switch first so it takes precedence.
+Then both switches would be registered on your ``PATH`` when you run ``eval $(opam env)``, with the local switch first so it takes precedence.
 Maybe that's a bad idea or maybe that's already how it works and I just don't know enough about Opam yet.
 
 After that install finishes, we can investigate our new LSP binary:
@@ -152,15 +152,15 @@ I'll register that LSP in my NeoVim config, and then we are ready.
 Actually Programming Now
 ========================
 
-Whenever we ran `dune init project camalbrarian`, the "project" argument told `dune` that we want a full project.
-That includes a library package (located in `lib/`), a binary/executable package (`bin/`), and a test package (`test/`).
-We will use all three of those packages eventually, but if you haven't run any OCaml yet, you'll want to start with the `bin/` folder just so you can see some code execute.
+Whenever we ran ``dune init project camalbrarian``, the "project" argument told ``dune`` that we want a full project.
+That includes a library package (located in ``lib/``), a binary/executable package (``bin/``), and a test package (``test/``).
+We will use all three of those packages eventually, but if you haven't run any OCaml yet, you'll want to start with the ``bin/`` folder just so you can see some code execute.
 
-If you open up `bin/main.ml`, you may see this error message from your LSP:
+If you open up ``bin/main.ml``, you may see this error message from your LSP:
 
   No config found for file bin/main.ml. Try calling 'dune build'.
 
-If you do what the friendly error message says and run `dune build`, then it should go away and you will be ready to write some code.
+If you do what the friendly error message says and run ``dune build``, then it should go away and you will be ready to write some code.
 
 Now, we can finally run our executable package and see the default output:
 
@@ -187,7 +187,7 @@ So for a database, your parser will take text input and produce an AST object, t
 .. _AST: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 
 All that to say, OCaml's variant types are fantastic for representing an AST with minimal boilerplate.
-So, let's make `lib/query.ml` and start writing our type:
+So, let's make ``lib/query.ml`` and start writing our type:
 
 .. code:: ocaml
 
@@ -197,17 +197,17 @@ So, let's make `lib/query.ml` and start writing our type:
 
 .. note::
 
-  I had to run `dune build lib/` so my LSP could find the new file.
+  I had to run ``dune build lib/`` so my LSP could find the new file.
 
-So we have a basic variant type with two cases, `LoadCSV` and `Rename`.
+So we have a basic variant type with two cases, ``LoadCSV`` and ``Rename``.
 There are two points of interest here, how OCaml modules work and where our query language's operators are coming from.
 I'll start with OCaml modules.
 
 OCaml modules are similar to modules or namespaces in other languages, so far as they are a way of organizing related definitions together.
-The main point I wanted to bring up now is why we named our variant type just `t`.
-The reason is because we are already inside the `Query` module, so I didn't want our type to be referred to as `Query.query`.
-You might be wondering "How are we inside the `Query` module, we never declared a module?"
-But OCaml has `file-based modules`_, so just by being inside of `lib/query.ml`, our type `t` is part of the `Query` module.
+The main point I wanted to bring up now is why we named our variant type just ``t``.
+The reason is because we are already inside the ``Query`` module, so I didn't want our type to be referred to as ``Query.query``.
+You might be wondering "How are we inside the ``Query`` module, we never declared a module?"
+But OCaml has `file-based modules`_, so just by being inside of ``lib/query.ml``, our type ``t`` is part of the ``Query`` module.
 There is a lot more to say about modules and we may cover some more as it comes up, but for now I recommend you read the official OCaml docs on `modules`_.
 
 .. _file-based modules: https://ocaml.org/docs/modules#file-based-modules
@@ -218,7 +218,7 @@ We are making a database that is based on relational algebra.
 I can't do relational algebgra justice here, so I recommend you read the `Wikipedia`_ article to get up to speed.
 Aside from the theory, that article also introduces some of the basic operators that we will be implementing in our query language.
 I'm just starting with the rename operator for now because it is the simplest to reason about.
-`LoadCSV` is certainly not part of the relational algebra, but CSV files are a great source of test data because they are simple for machines and humans to work with.
+``LoadCSV`` is certainly not part of the relational algebra, but CSV files are a great source of test data because they are simple for machines and humans to work with.
 
 .. _Wikipedia: https://en.wikipedia.org/wiki/Relational_algebra
 
@@ -236,8 +236,8 @@ I know, I know, that sounds insane, but it's true.
 I'll explain things quickly and throw a couple of links at you.
 
  * First, OCaml has `metaprogramming`_ which allows you to run raw-text preproccessors or PPX preproccessors which transform the OCaml language AST (yes, OCaml uses an AST as well. I told you they are useful!).
- * Second, OCaml has historically had a small standard library, so there are multiple alternative standard library packages that provide lots of useful stuff. The one we are interested in is called `Core`_. There is a PPX inside of the `Core` library that can essentially auto-generate a parser for our query type.
- * Third, the `Core` library is made by a high-frequency trading firm called `Jane Street`_. Jane Street is (probably) the biggest industrial user of OCaml and they drive a significant portion of the OCaml ecosystem. They are doing lots of interesting things with OCaml and they have made some very useful libraries to help them do that. Which means, people like me get to benefit from that work so I don't have to write my own parser (for now, maybe I'll write a fancier one later).
+ * Second, OCaml has historically had a small standard library, so there are multiple alternative standard library packages that provide lots of useful stuff. The one we are interested in is called `Core`_. There is a PPX inside of the ``Core`` library that can essentially auto-generate a parser for our query type.
+ * Third, the ``Core`` library is made by a high-frequency trading firm called `Jane Street`_. Jane Street is (probably) the biggest industrial user of OCaml and they drive a significant portion of the OCaml ecosystem. They are doing lots of interesting things with OCaml and they have made some very useful libraries to help them do that. Which means, people like me get to benefit from that work so I don't have to write my own parser (for now, maybe I'll write a fancier one later).
 
 .. _metaprogramming: https://ocaml.org/docs/metaprogramming
 .. _Core: https://github.com/janestreet/base
@@ -245,7 +245,7 @@ I'll explain things quickly and throw a couple of links at you.
 
 Makes sense? I hope so.
 
-Let's start by installing the `Core` library:
+Let's start by installing the ``Core`` library:
 
 .. code:: bash
 
@@ -260,7 +260,7 @@ Since Jane Street has already done the leg work and provided a PPX that can gene
 
 .. _s-expressions: https://en.wikipedia.org/wiki/s-expression
 
-After `Core` has finished installing, you will need to declare the dependency in `lib/dune` and we need to register the `ppx_sexp_conv` PPX for... reasons. Probably good reasons too:
+After ``Core`` has finished installing, you will need to declare the dependency in ``lib/dune`` and we need to register the ``ppx_sexp_conv`` PPX for... reasons. Probably good reasons too:
 
 .. code:: dune
 
@@ -280,9 +280,9 @@ Now we can finally add the s-expression PPX to our type:
   | Rename of string * string
   [@@deriving sexp]
 
-We opened the `Core` library so we could have access to the various s-expression functions that it defines.
-`[@@deriving sexp]` specifies that the `sexp` PPX should be used to process our type.
-That PPX will generate some code that allows us to use different `sexp` functions on it.
+We opened the ``Core`` library so we could have access to the various s-expression functions that it defines.
+``[@@deriving sexp]`` specifies that the ``sexp`` PPX should be used to process our type.
+That PPX will generate some code that allows us to use different ``sexp`` functions on it.
 
 For example, we can now define some of the simplest parsing and printing functions ever:
 
@@ -293,15 +293,15 @@ For example, we can now define some of the simplest parsing and printing functio
   let parse = Sexp.of_string >> t_of_sexp
   let print = sexp_of_t >> Sexp.to_string 
 
-Okay, `>>` is a little obtuse, but I just like composing functions and OCaml doesn't provide a built-in operator for it.
-If we were in F# land, then I could `>>` by default, but you have to define it yourself in OCaml.
-You could also use `Core.Fn.compose` since we installed `Core`, but its first two args are flipped compared to F#'s `>>`.
-And if we were using Haskell, then you could do the same using the `.` operator.
+Okay, ``>>`` is a little obtuse, but I just like composing functions and OCaml doesn't provide a built-in operator for it.
+If we were in F# land, then I could ``>>`` by default, but you have to define it yourself in OCaml.
+You could also use ``Core.Fn.compose`` since we installed ``Core``, but its first two args are flipped compared to F#'s ``>>``.
+And if we were using Haskell, then you could do the same using the ``.`` operator.
 
-Anyway, `>>` will run the first function, then take the result of that and pass it to the second argument.
-It's also worth noting that `parse` and `print` are written in a "point-free" style, which means something smart that I forgot exactly and I'm too lazy to look it up.
+Anyway, ``>>`` will run the first function, then take the result of that and pass it to the second argument.
+It's also worth noting that ``parse`` and ``print`` are written in a "point-free" style, which means something smart that I forgot exactly and I'm too lazy to look it up.
 Basically it just means that they don't take arguments and they use implicit arguments instead.
-So, I could have written `parse` like this:
+So, I could have written ``parse`` like this:
 
 .. code:: ocaml
 
@@ -309,27 +309,27 @@ So, I could have written `parse` like this:
 
 And it would have been exactly the same, just less cool looking.
 
-To test out our new functions, we are going to use OCaml's de-facto standard REPL, `utop`, to test it.
+To test out our new functions, we are going to use OCaml's de-facto standard REPL, ``utop``, to test it.
 If you don't know what a REPL is, it stands for `read, eval, print, loop`_ and it's a great way of interacting with your code.
 I don't know yet how great the REPL story is in OCaml, but for most Lisps you can integrate your REPL with your editor and you basically never have to run your project through the command line.
 Instead, you are able to evaluate select Lisp forms so you have a lot greater control over what code you want to run and when.
 
 .. _read, eval, print, loop: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
 
-Anyway, since OCaml tools are just packages that add a binary to your switch's `_opam/bin/` folder, we have to install `utop` to our local switch before running it:
+Anyway, since OCaml tools are just packages that add a binary to your switch's ``_opam/bin/`` folder, we have to install ``utop`` to our local switch before running it:
 
 .. code:: bash
 
   camalbrarian $ opam install utop
 
-With that done, we can enter the REPL with `dune utop`.
+With that done, we can enter the REPL with ``dune utop``.
 I won't explain how to use the REPL here.
 If you need help, follow along with `this`_ page and come back.
 
 .. _this: https://ocaml.org/docs/toplevel-introduction
 
-Once you are in the REPL, you can load our `Query` module with `#use "lib/query.ml";;`.
-Once you enter an expression ending with `;;`, `utop` will execute your code and spit back out the results.
+Once you are in the REPL, you can load our ``Query`` module with ``#use "lib/query.ml";;``.
+Once you enter an expression ending with ``;;``, ``utop`` will execute your code and spit back out the results.
 Here is what my REPL session looked like when I tested the query module:
 
 .. note::
@@ -349,11 +349,11 @@ Here is what my REPL session looked like when I tested the query module:
   Hint: Did you mean int_of_sexp or mat_of_sexp?
 
 That's not what we wanted.
-If we look up the error message, someone else has run into the `same thing` and Jane Street's OCamler in Chief came along with some helpful advice:
+If we look up the error message, someone else has run into the ``same thing`` and Jane Street's OCamler in Chief came along with some helpful advice:
 
 .. _same thing: https://discuss.ocaml.org/t/no-t-of-sexp-generated-by-deriving-sexp/1999
 
-  Try typing `#require "ppx_jane";;` first.
+  Try typing ``#require "ppx_jane";;`` first.
 
 .. code:: ocaml
 
@@ -391,7 +391,7 @@ Okay, rant over. Now we can actually parse and print some queries:
 Yup, that works.
 
 Whenever I was about to test the rename operator I realized that we have an issue with it.
-Right now, the rename case is of type `string * string`, but actually it needs to be `t * string * string` so it can take in an input query to rename.
+Right now, the rename case is of type ``string * string``, but actually it needs to be ``t * string * string`` so it can take in an input query to rename.
 Here is what the updated type looks like:
 
 .. code:: ocaml
@@ -401,7 +401,7 @@ Here is what the updated type looks like:
   | Rename of t * string * string
   [@@deriving sexp]
 
-Now we can reload our module in `utop` and test a more complicated query:
+Now we can reload our module in ``utop`` and test a more complicated query:
 
 .. code:: ocaml
 
@@ -421,7 +421,7 @@ Perfect, now we should be ready to write a simple query executor.
 Executing Queries
 =================
 
-So we have something to query against, I'll make `employees.csv` using some data from the Wikipedia article on relational algebra that I linked earlier:
+So we have something to query against, I'll make ``employees.csv`` using some data from the Wikipedia article on relational algebra that I linked earlier:
 
 .. code:: csv
 
@@ -432,7 +432,7 @@ So we have something to query against, I'll make `employees.csv` using some data
   Harriet,2202,Sales
   Mary,1257,Human Resources
 
-I'll write all the execution code in a new file, `lib/exec.ml`:
+I'll write all the execution code in a new file, ``lib/exec.ml``:
 
 .. code:: ocaml
 
@@ -459,9 +459,9 @@ I'll write all the execution code in a new file, `lib/exec.ml`:
   end
 
 To start, I am defining types to represent data within our database.
-`TupleValue` is a single scalar value and currently only supports strings because that's simple.
-`Tuple` is just a `TupleValue` list.
-And `Relation` is a `Tuple` list and a list of strings which represents the header names.
+``TupleValue`` is a single scalar value and currently only supports strings because that's simple.
+``Tuple`` is just a ``TupleValue`` list.
+And ``Relation`` is a ``Tuple`` list and a list of strings which represents the header names.
 This is probably not an ideal design, especially if you are trying to make a real database, but it works for now.
 
 This is also the first time we are seeing record types.
@@ -492,13 +492,13 @@ Since the only way we have of getting real data is through CSV files, let's make
     }
   | [] -> failwith "Cannot load an empty CSV"
 
-`_load_csv` will load a file from a given path, process the first line as a header, process the remaining lines as tuples, then spit out a `Relation`.
+``_load_csv`` will load a file from a given path, process the first line as a header, process the remaining lines as tuples, then spit out a ``Relation``.
 This is a fairly standard functional style of programming.
-The main part that I found interesting is the use of `~{keyword}:{value}` to specify named values in OCaml.
+The main part that I found interesting is the use of ``~{keyword}:{value}`` to specify named values in OCaml.
 I thought I wouldn't like it at first, but it's been growing on me and I've come to enjoy those labels.
 I feel like that makes it a lot easier to parse out separate arguments, especially for higher-order functions.
 
-I also wish that variant case constructors would be considered more like plain functions so I could pipe values into them, that would allow me to rewrite `_process_csv_line` like this:
+I also wish that variant case constructors would be considered more like plain functions so I could pipe values into them, that would allow me to rewrite ``_process_csv_line`` like this:
 
 .. code:: ocaml
 
@@ -518,8 +518,8 @@ Now that we have CSV parsing, let's also write the logic for our rename operator
   let open Relation in
   { relation with header_type = relation.header_type |> List.map ~f:(fun x -> if String.equal x from then to_ else x) }
 
-The `let open Relation in` line allows you to access the items within that module for the rest of your current scope.
-The `{ relation with ... }` syntax is a record update, which isn't technically updating the record but instead it allocates a new record.
+The ``let open Relation in`` line allows you to access the items within that module for the rest of your current scope.
+The ``{ relation with ... }`` syntax is a record update, which isn't technically updating the record but instead it allocates a new record.
 
 .. note::
 
@@ -539,30 +539,30 @@ Finally, we can pattern match on our query AST to evaluate it:
   | Query.LoadCSV path -> _load_csv path
   | Query.Rename (inner_query, from, to_) -> exec inner_query |> _rename_relation (from, to_)
 
-Specifying a function with `rec` before the name marks it as recursive, which is very useful for our use case here.
+Specifying a function with ``rec`` before the name marks it as recursive, which is very useful for our use case here.
 This kind of recursive evaluation is *very* common when working with recursive types like an AST.
-We could already use this `exec` function in `utop`, but instead I want to build a dedicated REPL for this database.
+We could already use this ``exec`` function in ``utop``, but instead I want to build a dedicated REPL for this database.
 
 .. code:: ocaml
 
   let rec repl () =
-  print_string "> ";
-  Out_channel.(flush stdout);
-  let input = In_channel.(input_line_exn stdin) in
-  let ast : Query.t = Query.parse input in
-  let result = exec ast in
-  let sexp = Relation.sexp_of_t result in
-  print_endline (Sexp.to_string_hum ~indent:4 sexp);
-  repl ()
+    print_string "> ";
+    Out_channel.(flush stdout);
+    let input = In_channel.(input_line_exn stdin) in
+    let ast : Query.t = Query.parse input in
+    let result = exec ast in
+    let sexp = Relation.sexp_of_t result in
+    print_endline (Sexp.to_string_hum ~indent:4 sexp);
+    repl ()
 
-Since we initialized this as a full-featured project ealier using `dune`, we already have our `bin/` application folder which would be perfect for running a REPL.
-Let's hook that up by call our `repl` function from `bin/main.ml`:
+Since we initialized this as a full-featured project ealier using ``dune``, we already have our ``bin/`` application folder which would be perfect for running a REPL.
+Let's hook that up by call our ``repl`` function from ``bin/main.ml``:
 
 .. code:: ocaml
 
   Camalbrarian.Exec.repl ()
 
-Simple! Let's see if it works. Calling `dune exec` in the shell should automatically load our project and evaluate `bin/main.ml`:
+Simple! Let's see if it works. Calling ``dune exec`` in the shell should automatically load our project and evaluate ``bin/main.ml``:
 
 .. code:: bash
 
@@ -581,19 +581,26 @@ Our CSV loading worked great, and the rename operator worked because the first h
 
 .. note:: 
 
-  If you are on a UNIX-like operating system, you probably have (or could install) `rlwrap`, which can make your custom REPL experience a lot nicer.
-  If you have it, just run `rlwrap dune exec camalbrarian`.
+  If you are on a UNIX-like operating system, you probably have (or could install) ``rlwrap``, which can make your custom REPL experience a lot nicer.
+  If you have it, just run ``rlwrap dune exec camalbrarian``.
 
 If you want to take this further there is a lot more interesting stuff to implement. Like:
 
-  * More relational algebra operators:
-    * projection, selection, natural joins, equijoins, semijoins, antijoins, and division!
-  * More data sources:
-    * Just querying CSVs is pretty boring. This would get a lot more interesting if it could query other databases like Postgres, MySQL, and SQL Server
-  * Query Optimization/Planning:
-    * Optimizing queries before running them would be a great way to get into more advanced pattern matching features like guard clauses. It can get very complicated (especially if paired with the next idea), but there are also a few simple optimizations that would be fun to add.
-  * Storing data:
-    * This project would get *extremely fun* if we started supporting insertions/updates/deletes and storing our data on disk. If you care about performance, storing relational data gets complicated fast because now you have to worry about concurrency, filesystem corruption, indexing, and a million other things. Interestingly, you would also need a separate language for describing modifications if you wanted to maintain relational algebra purity because, as far as I know, the relational algebra doesn't include any operators that mutate relations. It's very similar to functional programming in that sense.
+* More relational algebra operators:
+
+  * projection, selection, natural joins, equijoins, semijoins, antijoins, and division!
+
+* More data sources:
+
+  * Just querying CSVs is pretty boring. This would get a lot more interesting if it could query other databases like Postgres, MySQL, and SQL Server
+
+* Query Optimization/Planning:
+
+  * Optimizing queries before running them would be a great way to get into more advanced pattern matching features like guard clauses. It can get very complicated (especially if paired with the next idea), but there are also a few simple optimizations that would be fun to add.
+
+* Storing data:
+
+  * This project would get *extremely fun* if we started supporting insertions/updates/deletes and storing our data on disk. If you care about performance, storing relational data gets complicated fast because now you have to worry about concurrency, filesystem corruption, indexing, and a million other things. Interestingly, you would also need a separate language for describing modifications if you wanted to maintain relational algebra purity because, as far as I know, the relational algebra doesn't include any operators that mutate relations. It's very similar to functional programming in that sense.
 
 I may tackle a few of the earlier ideas in a future post, but I'll stop here for now.
 

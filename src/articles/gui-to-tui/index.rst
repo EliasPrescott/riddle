@@ -46,7 +46,7 @@ Getting used to NeoVim honestly didn't even take that long looking back.
 But at some point early on in the switch, I realized that quitting VSCode meant I would need to find some other way to use git.
 
 At first, I went back to what I learned in college.
-Good old `git status`, `git pull`, `git commit -a`, and `git push`.
+Good old ``git status``, ``git pull``, ``git commit -a``, and ``git push``.
 It was refreshing coming back to this workflow, but I still didn't understand git very well.
 Now that I was trying to understand the terminal better and become a better developer, I knew I had to take git more seriously.
 So I found that `Pro Git`_ is available to read for free online.
@@ -55,7 +55,7 @@ That book gave me a whole new appreciation for how git works.
 All of the sudden, I was able to place those basic commands I was using within the wider context of how git works.
 I understood that branches are really just pointers to a commit hash.
 Now I understood why merge conflicts happened, and I even learned a few basic approaches to fixing them (or avoiding them).
-I even learned how the `.git/` folder works and how git organizes the commit data.
+I even learned how the ``.git/`` folder works and how git organizes the commit data.
 I learned the power of `content-addressable stores`_.
 Taking the time to learn git better was an important moment for me as a developer because it taught me the value of digging deeper into a topic.
 I could have kept on programming and using git without truly understanding it.
@@ -69,10 +69,10 @@ After I understood git better, I kept using it in the command line for a while.
 But eventually, one of the NeoVim YouTubers I like (either `ThePrimeagen`_ or `teej_dv`_) mentioned how great `vim-fugitive`_ is.
 Vim fugitive is a NeoVim plugin that allows you to intuitively use git from within NeoVim.
 The plugin is almost like an alias for the git command that is built in to NeoVim.
-It allows you to run `:G ...` within vim, which will then behave as if you ran `git ...` in another terminal.
+It allows you to run ``:G ...`` within vim, which will then behave as if you ran ``git ...`` in another terminal.
 But what makes the plugin awesome is the extra conveniences it provides.
-You can run just `:G` to get a nice status buffer with a bunch of keymappings for quickly performing a whole bunch of different git operations.
-Running `:G blame` in a file will give you a nice extra buffer on the left side, and you can even press `<Enter>` on any of the blame lines to navigate through to that commit's details.
+You can run just ``:G`` to get a nice status buffer with a bunch of keymappings for quickly performing a whole bunch of different git operations.
+Running ``:G blame`` in a file will give you a nice extra buffer on the left side, and you can even press ``<Enter>`` on any of the blame lines to navigate through to that commit's details.
 Fugitive is a very nice git wrapper for NeoVim and I would highly recommend it if you are looking for something like that.
 
 .. _ThePrimeagen: https://www.youtube.com/@ThePrimeagen
@@ -81,7 +81,7 @@ Fugitive is a very nice git wrapper for NeoVim and I would highly recommend it i
 
 But my story with git is not done yet, because one day, I stumbled upon this video: `Lazygit creator interviews DHH (Rails creator)`_.
 YouTube recommended the video to me because I was on a Ruby on Rails kick and I was watching a lot of DHH's videos.
-Listening to the interview made me very curious about this `lazygit` tool, so I went and found this video: `15 Lazygit Features In Under 15 Minutes`_.
+Listening to the interview made me very curious about this lazygit tool, so I went and found this video: `15 Lazygit Features In Under 15 Minutes`_.
 Seeing how fast Jesse was able to do some of these git operations that I wouldn't even know how to do off the top of my head was impressive.
 It was like when I first watched ThePrimeagen using NeoVim or the terminal.
 I saw just how good someone else's workflow was and I wanted it for myself.
