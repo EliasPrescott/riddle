@@ -1,0 +1,33 @@
+from pygments import highlight
+from pygments.lexers import PythonLexer, TextLexer, JsonLexer
+from pygments.formatters import ImageFormatter, RtfFormatter
+
+code = """
+books = [
+    "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+    "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings",
+    "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah",
+    "Esther", "Job", "Psalms", "Proverbs", "Ecclesiastes",
+    "Song of Songs", "Isaiah", "Jeremiah", "Lamentations",
+    "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah",
+    "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah",
+    "Malachi", "Matthew", "Mark", "Luke", "John", "Acts", "Romans",
+    "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+    "Philippians", "Colossians", "1 Thessalonians",
+    "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon",
+    "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John",
+    "3 John", "Jude", "Revelation"
+]
+"""
+
+lexer = PythonLexer()
+
+with open('output.png', "wb") as f:
+    # Set parameters for ImageFormatter.
+    formatter = ImageFormatter(
+        line_pad=15,
+        font_size=36,
+        line_numbers=False,
+    )
+    highlighted_code = highlight(code, lexer, formatter)
+    f.write(highlighted_code)

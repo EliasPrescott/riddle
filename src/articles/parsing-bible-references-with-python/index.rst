@@ -2,9 +2,16 @@
 :date: 2025-10-16
 :author: Elias Prescott
 :tags: bible
+:image: 1
+
+.. image:: cover.png
+
+|
 
 Parsing Bible References with Python
 ====================================
+
+|
 
 I like reading the bible and writing about it, but I don't like manually copying and pasting bible verses.
 So, I write little parsers that can take a bible reference (e.g. "Genesis 1:1 (ESV)") and convert it into the referenced verses.
