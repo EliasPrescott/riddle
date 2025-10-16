@@ -25,7 +25,7 @@ jobs:
       id: deployment
       uses: actions/upload-pages-artifact@v4 # or specific "vX.X.X" version tag for this action
       with:
-        path: /home/runner/src/_build
+        path: /home/runner/work/riddle/riddle/src/_build/html
 
   deploy:
     needs: build
