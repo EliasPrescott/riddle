@@ -13,7 +13,7 @@ sys.path.append(str(Path('_ext').resolve()))
 
 project = "australorp.dev"
 html_title = "australorp.dev"
-html_baseurl = "staging.australorp.dev"
+html_baseurl = "australorp.dev"
 copyright = '2025, Elias Prescott'
 author = 'Elias Prescott'
 
