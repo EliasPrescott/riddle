@@ -18,6 +18,9 @@ jobs:
       run: |
         cd src/
         make html
+        pwd
+        ls
+        ls _build
     - name: Upload static files as artifact
       id: deployment
       uses: actions/upload-pages-artifact@v4 # or specific "vX.X.X" version tag for this action
