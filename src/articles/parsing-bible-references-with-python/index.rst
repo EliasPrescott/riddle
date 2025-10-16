@@ -4,6 +4,27 @@
 :tags: bible
 :image: 1
 
+..
+  TODO: Make a custom directive that inherits from the meta directive and can automatically generate the SEO tags.
+  This would require being able to query the AST from the directive run function, which might not be possible.
+  I don't know if a custom builder would be a good (or the only) alternative or not.
+
+.. meta::
+   :description: Learn how to parse bible verse references using Python
+
+   :property="og:url": https://australorp.dev/articles/parsing-bible-references-with-python/index.html
+   :property="og:type": website
+   :property="og:title": Parsing Bible References with Python — australorp.dev
+   :property="og:description": Learn how to parse bible verse references using Python
+   :property="og:image": /_images/cover.png
+
+   :name="twitter:card": summary_large_image
+   :property="twitter:domain": australorp.dev
+   :property="twitter:url": https://australorp.dev/articles/parsing-bible-references-with-python/index.html
+   :name="twitter:title": Parsing Bible References with Python — australorp.dev
+   :name="twitter:description": Learn how to parse bible verse references using Python
+   :name="twitter:image": /_images/cover.png
+
 .. image:: cover.png
 
 |
