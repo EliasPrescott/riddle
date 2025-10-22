@@ -1,8 +1,9 @@
+from typing import final, override
 from docutils import nodes
-from typing import Iterable
+from collections.abc import Iterable
 
 from sphinx.application import Sphinx
-from sphinx.util.docutils import SphinxDirective, SphinxRole
+from sphinx.util.docutils import SphinxDirective
 from sphinx.util.typing import ExtensionMetadata
 import bible_ref_parser
 
@@ -13,6 +14,7 @@ def render_ref_nodes(chapter_ref: bible_ref_parser.ResolvedChapter) -> Iterable[
         yield nodes.Text(verse.content + " ")
 
 
+@final
 class BibleRefDirective(SphinxDirective):
     has_content = True
 
@@ -28,9 +30,11 @@ class BibleRefDirective(SphinxDirective):
                 nodes.attribution(text=raw_ref),
             ])
 
+    @override
     def run(self) -> list[nodes.Node]:
         x = list(self._generate_nodes())
         return x
+
 
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_directive('bible-ref', BibleRefDirective)

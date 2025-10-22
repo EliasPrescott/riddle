@@ -1,4 +1,5 @@
-from typing import TypeVar, Optional, Iterable, Callable
+from typing import TypeVar, Callable
+from collections.abc import Iterable
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
@@ -58,7 +59,7 @@ class ResolvedChapter:
     verses: list[ResolvedVerse]
 
 T = TypeVar('T')
-def find(f: Callable[[T], bool], iter: Iterable[T]) -> Optional[T]:
+def find(f: Callable[[T], bool], iter: Iterable[T]) -> T | None:
     return next((x for x in iter if f(x)), None)
 
 @dataclass
@@ -82,7 +83,9 @@ class BibleReference:
             assert verse is not None
             verses = [verse]
         else:
-            verses = list(filter(lambda x: int(x.attrib['number']) in self.verse, chapter.iter('verse')))
+            # pyright won't narrow self.verse to range directly, but it does narrow verse_range 🤔
+            verse_range = self.verse
+            verses = list(filter(lambda x: int(x.attrib['number']) in verse_range, chapter.iter('verse')))
 
         return ResolvedChapter(
             version = self.version,

@@ -1,6 +1,6 @@
 from pygments import highlight
-from pygments.lexers import PythonLexer, TextLexer, JsonLexer
-from pygments.formatters import ImageFormatter, RtfFormatter
+from pygments.lexers import PythonLexer
+from pygments.formatters import ImageFormatter
 
 code = """
 books = [
