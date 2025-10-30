@@ -53,6 +53,12 @@ html_theme_options = {
             "icon": "fa-solid fa-rss",
             "type": "fontawesome",
         },
+        {
+            "name": "Source Repo",
+            "url": "https://github.com/eliasprescott/riddle",
+            "icon": "fa-solid fa-code",
+            "type": "fontawesome",
+        },
     ],
 }
 html_static_path = ['_static']
