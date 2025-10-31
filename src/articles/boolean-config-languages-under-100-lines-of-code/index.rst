@@ -29,6 +29,16 @@ Or you can generate a list of dates that match your pattern.
   2040-02-29
   2044-02-29
 
+Here is an embedded web app where you can try it out:
+
+.. raw:: html
+
+   <iframe width="100%" height="500px" srcdoc="
+     <link rel=&quot;stylesheet&quot; href=&quot;/_static/schedlang-0.1/styles.css&quot;>
+     <script defer src=&quot;/_static/schedlang-0.1/main.bc.js&quot;></script>
+     <div id=&quot;app&quot;></div>">
+   </iframe>
+
 I wrote it in `OCaml`_ and almost all the heavy lifting is done by the `Core`_ package.
 
 .. _OCaml: https://ocaml.org/
