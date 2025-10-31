@@ -55,7 +55,7 @@ html_theme_options = {
         },
         {
             "name": "Source Repo",
-            "url": "https://github.com/eliasprescott/riddle",
+            "url": "https://github.com/EliasPrescott",
             "icon": "fa-solid fa-code",
             "type": "fontawesome",
         },
