@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Fantasque";
+  src: url("/_static/fonts/fantasque-sans-mono/FantasqueSansMono-Regular.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: "Fantasque";
+  src: url("/_static/fonts/fantasque-sans-mono/FantasqueSansMono-Italic.ttf") format("TrueType");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Fantasque";
+  src: url("/_static/fonts/fantasque-sans-mono/FantasqueSansMono-Bold.ttf") format("TrueType");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Fantasque";
+  src: url("/_static/fonts/fantasque-sans-mono/FantasqueSansMono-BoldItalic.ttf") format("TrueType");
+  font-weight: bold;
+  font-style: italic;
+}
