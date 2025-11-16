@@ -1,0 +1,7 @@
+html {
+  --pst-font-family-monospace: "Fantasque", var(--pst-font-family-monospace-system);
+}
+
+pre {
+  font-size: 1em;
+}
