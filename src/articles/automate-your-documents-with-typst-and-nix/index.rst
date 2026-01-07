@@ -258,7 +258,7 @@ We are in luck, because fetching resources from a Git repository is a speciality
 
 .. tip::
 
-   When you use a function like ``pkgs.fetchgit`` that takes a hash argument, leave the hash argument blank to start. When you evaluate the function call, Nix will see the blank hash, calculate the correct hash for you, and then throw an error containing the correct hash.
+  When you use a function like ``pkgs.fetchgit`` that takes a hash argument, leave the hash argument blank to start. When you evaluate the function call, Nix will see the blank hash, calculate the correct hash for you, and then throw an error containing the correct hash.
   Then you can just copy and paste the hash in without having to calculate it manually.
 
 Using ``sparseCheckout`` on fetchgit allows us to only grab the one file we need.
