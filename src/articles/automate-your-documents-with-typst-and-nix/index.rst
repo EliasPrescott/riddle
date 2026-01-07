@@ -15,6 +15,7 @@ Here is the full list of advantages:
 * Reproducible Builds: If you don't change something, your document doesn't change. Every time you compile it, you get the exact same document.
 * Full Change History: Every change is stored in version control (Git) with commit messages and (hopefully) commit descriptions that tell you what changed and why.
 * Zero Vendor Lock-in: Once you define your document this way, you have complete control. It's not locked in obtuse data formats or clunky desktop apps. You can edit it however you want, whenever you want.
+* Safe Collaboration: If you need to collaborate with others, you can rely on the safety of Git and use whatever branching and code review strategies that you desire. You don't have to rely on some "multiplayer editing" feature built-in to some app. Collaboration comes for free.
 
 If you truly care about the documents you create, this method gives you the control you deserve.
 
