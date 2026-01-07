@@ -27,7 +27,7 @@ We'll start with creating a project directory and a Nix flake.
 .. warning::
 
    If you are using Nix flakes for the first time, you will likely have to add some configuration somewhere.
-   For me, I have the line ``experimental-features = nix-command flakes`` saved in ``~/.config/nix/nix.conf``.
+   In my case, I have the line ``experimental-features = nix-command flakes`` saved in ``~/.config/nix/nix.conf``.
 
 .. code-block:: bash
 
