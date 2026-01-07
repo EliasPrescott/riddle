@@ -214,6 +214,9 @@ A Nix derivation is simply a definition for how to build a given package based o
 In our case, our "inputs" consists solely of ``pkgs.typst``.
 By interpolating ``pkgs.typst`` into the ``buildPhase`` attribute of our ``mkDerivation`` call, we are explicitly referencing the Typst package and telling Nix that Typst is an input to our derivation.
 
+Nix defines ``$out`` as the path where the outputs of the derivation should go.
+So once you create the ``$out`` directory, you can store any outputs you want in it or its sub-directories.
+
 Now that we have a default package defined, we can use ``nix build`` to build it:
 
 .. code-block:: bash
