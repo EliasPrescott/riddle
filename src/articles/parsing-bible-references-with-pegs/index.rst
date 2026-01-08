@@ -50,7 +50,7 @@ Without further ado, here is how I parse bible references in Janet:
    (peg/match bible-ref "Matthew 5:3-12")
    # => @["Matthew" 5 @[3 12]]
 
-If you want to try out this bible parser quickly, you run Janet using Nix, and then paste each block in succession into the REPL.
+If you want to try out this bible parser quickly, you can run Janet using Nix, and then paste each block in succession into the REPL.
 
 .. code-block:: bash
 
