@@ -6,11 +6,12 @@ Automate Your Documents with Typst and Nix
 ==========================================
 
 With just three tools, `Typst`_, `Nix`_, and `Git`_, you can define exactly how you want a document laid out, exactly how you want it compiled, and exactly how it changes over time.
-Here is the full list of advantages:
 
 .. _Typst: https://typst.app
 .. _Nix: https://nixos.org
 .. _Git: https://git-scm.com
+
+Here is the full list of advantages:
 
 * Reproducible Builds: If you don't change something, your document doesn't change. Every time you compile it, you get the exact same document.
 * Full Change History: Every change is stored in version control (Git) with commit messages and (hopefully) commit descriptions that tell you what changed and why.

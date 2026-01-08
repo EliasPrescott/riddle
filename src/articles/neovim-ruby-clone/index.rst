@@ -9,6 +9,7 @@ I've been learning Ruby recently.
 I've really been enjoying it and I've been reading through the Ruby docs quite a bit.
 When I found this section on `io/console`_, I thought it sounded like fun.
 Since I have grown quite attached to using NeoVim as my editor, I thought it would be fun to make a NeoVim clone.
+
 For now, I'm calling it RVim, which is short for Ruby Vim.
 A high-quality implementation of a text editor would require *tons* of code to handle all the little edge cases around text manipulation, buffer display, and cursor handling.
 Obviously RVim is a long way off from handling all of that correctly, but I am surprised by how many features I've been able to pack into ~600 lines of code.

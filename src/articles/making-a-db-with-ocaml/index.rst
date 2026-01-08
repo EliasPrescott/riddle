@@ -8,6 +8,7 @@ Making a Database with OCaml
 I've been playing around with OCaml recently and really enjoying it.
 I love functional programming and have also enjoyed playing around with F#, Elixir, and Haskell in the past, but I've never gotten super far with any of those languages for various reasons.
 So, I wanted to take on a more serious project to really kick the tires on the language and start building some deeper knowledge.
+
 In the past, I read a book about the pure relational algebra that inspires modern relational databases (`Amazon book link`_).
 Taking what I learned from the book, I wrote a small Rust library that would parse a query language and use it to run queries against CSV files.
 That project never turned into a full-on database engine, but I enjoyed the project a lot and thought it would be a good project to recreate in OCaml for a few reasons.

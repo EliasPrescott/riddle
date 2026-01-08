@@ -2,7 +2,6 @@
 :date: 2025-10-16
 :author: Elias Prescott
 :tags: bible
-:image: 1
 
 ..
   TODO: Make a custom directive that inherits from the meta directive and can automatically generate the SEO tags.
@@ -25,14 +24,14 @@
    :name="twitter:description": Learn how to parse bible verse references using Python
    :name="twitter:image": /_images/cover.png
 
+|
+
 .. image:: cover.png
 
 |
 
 Parsing Bible References with Python
 ====================================
-
-|
 
 I like reading the bible and writing about it, but I don't like manually copying and pasting bible verses.
 So, I write little parsers that can take a bible reference (e.g. "Genesis 1:1 (ESV)") and convert it into the referenced verses.

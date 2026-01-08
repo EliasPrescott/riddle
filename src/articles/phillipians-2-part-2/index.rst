@@ -6,6 +6,16 @@
 Study of Philippians 2:12-30
 ============================
 
+To start off, we can refresh our memories of where we are in Philippians.
+Paul is writing this book from prison, likely in Rome, Caesarea, or possibly `in Ephesus`_.
+Despite his imprisonment, Paul has spent much of Philippians writing about joy.
+He is modeling the attitude that we should have as Christians.
+No matter what hardships this life may bring, nothing can take away that joy.
+
+.. _in Ephesus: https://hermeneutics.stackexchange.com/a/77731
+
+So, we'll be looking at chapter 2, verses 12 through 30.
+
 .. note::
 
   I have recently switched to using the `Christian Standard Bible (CSB)`_ for most of my private study and verse references.
@@ -16,18 +26,7 @@ Study of Philippians 2:12-30
   The CSB renders "Then I can boast in the day of Christ that I didn’t run or labor for nothing", while the ESV reads "so that in the day of Christ I may be proud that I did not run in vain or labor in vain."
   The CSB feels much more compact and uses the contraction "didn't", which is part of why I think it feels so natural to read.
 
-
 .. _Christian Standard Bible (CSB): https://csbible.com/
-
-To start off, we can refresh our memories of where we are in Philippians.
-Paul is writing this book from prison, likely in Rome, Caesarea, or possibly `in Ephesus`_.
-Despite his imprisonment, Paul has spent much of Philippians writing about joy.
-He is modeling the attitude that we should have as Christians.
-No matter what hardships this life may bring, nothing can take away that joy.
-
-.. _in Ephesus: https://hermeneutics.stackexchange.com/a/77731
-
-So, we'll be looking at chapter 2, verses 12 through 30.
 
 .. bible-ref::
 
