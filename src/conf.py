@@ -14,7 +14,7 @@ sys.path.append(str(Path('_ext').resolve()))
 project = "australorp.dev"
 html_title = "australorp.dev"
 html_baseurl = "https://australorp.dev"
-copyright = '2025, Elias Prescott'
+copyright = '2026, Elias Prescott'
 author = 'Elias Prescott'
 
 blog_baseurl = html_baseurl
