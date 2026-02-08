@@ -5,3 +5,18 @@ html {
 pre {
   font-size: 1em;
 }
+
+.postlist > .ablog-post {
+  padding: 24px 0;
+  border-bottom: 1px solid white;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+html[data-theme="light"] {
+  .postlist > .ablog-post {
+    border-bottom: 1px solid black;
+  }
+}
